@@ -1,0 +1,348 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Inscrição - Cultura para Casais</title>
+
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600;700&family=Open+Sans:wght@400;600&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" />
+
+  <style>
+    :root {
+      --vinho: #5e0f1b;
+      --vermelho: #8f1d2c;
+      --rosa: #c7546a;
+      --rosa-claro: #f0c4cc;
+      --branco: #ffffff;
+      --card: rgba(255, 255, 255, 0.08);
+      --borda: rgba(255, 255, 255, 0.14);
+      --sombra: rgba(0, 0, 0, 0.25);
+    }
+
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    body {
+      font-family: "Open Sans", sans-serif;
+      min-height: 100vh;
+      background:
+        linear-gradient(rgba(94, 15, 27, 0.82), rgba(94, 15, 27, 0.92)),
+        radial-gradient(circle at top, #b33449 0%, #5e0f1b 60%, #3b0911 100%);
+      color: var(--branco);
+    }
+
+    header {
+      text-align: center;
+      padding: 2rem 1rem 1rem;
+    }
+
+    .topo-pequeno {
+      font-size: 0.95rem;
+      letter-spacing: 3px;
+      text-transform: uppercase;
+      color: var(--rosa-claro);
+      margin-bottom: 0.8rem;
+    }
+
+    .titulo {
+      font-family: "Poppins", sans-serif;
+      font-size: clamp(2rem, 5vw, 4rem);
+      font-weight: 700;
+      line-height: 1.1;
+      margin-bottom: 0.5rem;
+    }
+
+    .titulo span {
+      color: #ffd7de;
+    }
+
+    .subtitulo {
+      font-size: 1.1rem;
+      color: #ffeef1;
+      margin-bottom: 1rem;
+    }
+
+    .data-evento {
+      display: inline-block;
+      margin-top: 0.5rem;
+      background: rgba(0, 0, 0, 0.25);
+      border: 1px solid rgba(255,255,255,0.18);
+      padding: 0.8rem 1.2rem;
+      border-radius: 12px;
+      font-weight: 700;
+      letter-spacing: 1px;
+    }
+
+    main {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      padding: 2rem 1rem 3rem;
+    }
+
+    .card {
+      width: 100%;
+      max-width: 650px;
+      background: var(--card);
+      backdrop-filter: blur(10px);
+      -webkit-backdrop-filter: blur(10px);
+      border: 1px solid var(--borda);
+      border-radius: 24px;
+      padding: 2rem;
+      box-shadow: 0 12px 30px var(--sombra);
+    }
+
+    .card h2 {
+      font-family: "Poppins", sans-serif;
+      font-size: 1.8rem;
+      margin-bottom: 0.5rem;
+      text-align: center;
+    }
+
+    .card p.descricao {
+      text-align: center;
+      margin-bottom: 2rem;
+      color: #ffe2e7;
+      line-height: 1.6;
+    }
+
+    .info-evento {
+      background: rgba(0, 0, 0, 0.18);
+      border: 1px solid rgba(255,255,255,0.1);
+      border-radius: 16px;
+      padding: 1rem;
+      margin-bottom: 1.8rem;
+      line-height: 1.8;
+      color: #fff5f7;
+    }
+
+    .info-evento strong {
+      color: #ffd7de;
+    }
+
+    form {
+      text-align: left;
+    }
+
+    label {
+      display: block;
+      margin-bottom: 0.5rem;
+      font-weight: 600;
+      color: #fff;
+    }
+
+    input,
+    select {
+      width: 100%;
+      padding: 1rem;
+      border-radius: 12px;
+      border: 2px solid rgba(255,255,255,0.12);
+      background: rgba(255,255,255,0.08);
+      color: white;
+      font-size: 1rem;
+      margin-bottom: 1.3rem;
+      transition: 0.3s ease;
+    }
+
+    input::placeholder {
+      color: rgba(255,255,255,0.7);
+    }
+
+    select {
+      appearance: none;
+      -webkit-appearance: none;
+      -moz-appearance: none;
+    }
+
+    select option {
+      color: #222;
+    }
+
+    input:focus,
+    select:focus {
+      outline: none;
+      border-color: var(--rosa-claro);
+      box-shadow: 0 0 0 4px rgba(240, 196, 204, 0.15);
+    }
+
+    button {
+      width: 100%;
+      border: none;
+      border-radius: 999px;
+      padding: 1rem 1.4rem;
+      font-size: 1.05rem;
+      font-weight: 700;
+      cursor: pointer;
+      color: white;
+      background: linear-gradient(135deg, #d1445b, #a91f35);
+      transition: 0.3s ease;
+      box-shadow: 0 10px 20px rgba(0,0,0,0.18);
+    }
+
+    button:hover {
+      transform: translateY(-2px);
+      box-shadow: 0 14px 28px rgba(0,0,0,0.25);
+    }
+
+    .mensagem {
+      margin-top: 1rem;
+      font-weight: 600;
+      padding: 1rem;
+      border-radius: 12px;
+      display: none;
+    }
+
+    .sucesso {
+      background: rgba(30, 120, 60, 0.22);
+      color: #d8ffe3;
+      border: 1px solid rgba(120, 255, 170, 0.28);
+    }
+
+    .erro {
+      background: rgba(170, 40, 40, 0.22);
+      color: #ffd9d9;
+      border: 1px solid rgba(255, 120, 120, 0.28);
+    }
+
+    footer {
+      text-align: center;
+      padding: 1.5rem 1rem 2.5rem;
+      color: #ffe2e7;
+      line-height: 1.8;
+      font-size: 0.98rem;
+    }
+
+    @media (max-width: 600px) {
+      .card {
+        padding: 1.4rem;
+      }
+
+      .titulo {
+        font-size: 2.4rem;
+      }
+
+      .card h2 {
+        font-size: 1.5rem;
+      }
+    }
+  </style>
+</head>
+<body>
+  <header>
+    <div class="topo-pequeno">Cultura da Graça • Igreja Cristã</div>
+    <h1 class="titulo">Cultura para <span>Casais</span></h1>
+    <p class="subtitulo">Amor em movimento ❤️</p>
+    <div class="data-evento">28.MARÇO • Vagas Limitadas</div>
+  </header>
+
+  <main>
+    <div class="card">
+      <h2><i class="fas fa-heart"></i> Formulário de Inscrição</h2>
+      <p class="descricao">
+        Preencha os dados abaixo para participar do evento de casais.
+      </p>
+
+      <div class="info-evento">
+        <div><strong>16H às 17H30</strong> — 0 a 10 anos de casados</div>
+        <div><strong>19H às 20H30</strong> — 11 anos ou mais de casados</div>
+        <div><strong>Local:</strong> Rua Engenheiro César Polilo, 279</div>
+      </div>
+
+      <form id="cadastroForm">
+        <label for="nome">Nome do casal *</label>
+        <input type="text" id="nome" placeholder="Ex: João e Maria" required />
+
+        <label for="telefone">Telefone *</label>
+        <input type="tel" id="telefone" placeholder="(11) 99999-9999" required />
+
+        <label for="tempo">Tempo de casados *</label>
+        <select id="tempo" required>
+          <option value="">Selecione uma opção</option>
+          <option value="0 a 10 anos">0 a 10 anos</option>
+        </select>
+
+        <button type="submit">
+          <i class="fas fa-paper-plane"></i> Fazer inscrição
+        </button>
+      </form>
+
+      <div id="mensagem" class="mensagem"></div>
+    </div>
+  </main>
+
+  <footer>
+    <p>Amar a Deus e servir pessoas,</p>
+    <p>Amar pessoas e servir a Deus! ❤️</p>
+  </footer>
+
+  <script type="module">
+    import { initializeApp } from "https://www.gstatic.com/firebasejs/11.0.1/firebase-app.js";
+    import { getFirestore, collection, addDoc, serverTimestamp, getDocs } from "https://www.gstatic.com/firebasejs/11.0.1/firebase-firestore.js";
+
+    const firebaseConfig = {
+      apiKey: "AIzaSyCDQpx2A26dN0O4FTAfSHVLtJkAgXPGUG0",
+      authDomain: "cadastro-9051e.firebaseapp.com",
+      projectId: "cadastro-9051e",
+      storageBucket: "cadastro-9051e.appspot.com",
+      messagingSenderId: "59284466751",
+      appId: "1:59284466751:web:a677c1da0d7a637ca41c8a"
+    };
+
+    const app = initializeApp(firebaseConfig);
+    const db = getFirestore(app);
+
+    const form = document.getElementById("cadastroForm");
+    const mensagem = document.getElementById("mensagem");
+
+    form.addEventListener("submit", async (e) => {
+      e.preventDefault();
+      mensagem.style.display = "none";
+
+      const nome = document.getElementById("nome").value.trim();
+      const telefone = document.getElementById("telefone").value.trim();
+      const tempo = document.getElementById("tempo").value;
+
+      if (!nome || !telefone || !tempo) {
+        mensagem.textContent = "❌ Por favor, preencha todos os campos.";
+        mensagem.className = "mensagem erro";
+        mensagem.style.display = "block";
+        return;
+      }
+
+      try {
+        // Verifica o limite antes de salvar
+        const snapshot = await getDocs(collection(db, "inscricoes_cafe"));
+        const total = snapshot.size;
+
+        if (total >= 12) {
+          mensagem.textContent = "❌ Vagas esgotadas!";
+          mensagem.className = "mensagem erro";
+          mensagem.style.display = "block";
+          return;
+        }
+
+        await addDoc(collection(db, "inscricoes_cafe"), {
+          nome: nome,
+          telefone: telefone,
+          tempo_casados: tempo,
+          data_inscricao: serverTimestamp(),
+        });
+
+        mensagem.textContent = "✅ Inscrição realizada com sucesso!";
+        mensagem.className = "mensagem sucesso";
+        mensagem.style.display = "block";
+        form.reset();
+      } catch (error) {
+        console.error("Erro ao salvar no Firestore:", error);
+        mensagem.textContent = "❌ Erro ao salvar no banco de dados. Verifique as regras do Firestore.";
+        mensagem.className = "mensagem erro";
+        mensagem.style.display = "block";
+      }
+    });
+  </script>
+</body>
+</html>
